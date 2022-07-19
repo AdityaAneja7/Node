@@ -6,7 +6,10 @@ const app = express();
 
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
+// parser or middleware used to parse data 
+app.use(express.urlencoded());
 
+app.use(express.static('assests')); //for accessing static files
 var contactList=[
     {
         name:"Aditya",
@@ -37,7 +40,19 @@ app.get('/practice',function(req,res){
 });
 
 app.post('/create-contact',function(req,res){
-return res.redirect('/practice');
+    //It is used to redirect to a certain url defined
+// return res.redirect('/practice');
+
+    // console.log(req.body.name);
+    // console.log(req.body.phone);
+
+
+    contactList.push({
+        name:req.body.name,
+        phone:req.body.phone
+    })
+
+    return res.redirect('/');
 });
 
 app.listen(port, function(err){
