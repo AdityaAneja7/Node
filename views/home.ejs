@@ -11,8 +11,15 @@
             <ul>
                 <% for (let i of cotact_list){%>
                     <li>
+                        <div>
                         <p><%= i.name %></p>
                         <p><%= i.phone %></p>
+                    </div>
+                    <div>
+                       <a href="/delete-contact/?phone=<%= i.phone %>">
+                         <button>Delete</button>
+                       </a> 
+                    </div>
                     </li>
 
                     <%}%>
@@ -22,6 +29,7 @@
             <input type="text" name="name" placeholder="Name">
             <input type="number" name="phone" placeholder="Phone">
             <button type="submit">Add Contact</button>
+            <!-- <button type="button">Delete</button> -->
         </form>
         <script type="text/javascript" src="/js/home.js"></script>
     </body>
